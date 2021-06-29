@@ -1,0 +1,9 @@
+Expression,Revert,Verify,Check,Fetch
+CREATE[\s]+FUNCTION (.*?)RETURNS,DROP FUNCTION %%%;,"SELECT 1/(count(*))
+    FROM information_schema.routines
+    WHERE routines.routine_name = '%%%' ;",SELECT 1 as flag;,SELECT pg_get_functiondef('%%%'::regproc);
+VIEW (.*?) AS,DROP VIEW %%%;,SELECT * FROM %%% WHERE false;,SELECT 1 as flag;,SELECT pg_get_functiondef('%%%'::regproc);
+CREATE[\s]+OR[\s]+REPLACE[\s]+FUNCTION (.*?)RETURNS,DROP FUNCTION %%%;,"SELECT 1/(count(*))
+    FROM information_schema.routines
+    WHERE routines.routine_name = '%%%' ;",SELECT 1-(count(*)) as flag FROM information_schema.routines WHERE routines.routine_name IN ('%%%');,SELECT pg_get_functiondef('%%%'::regproc);
+ALTER[\s]+TABLE[\s]+(.*?) ADD[\s]+COLUMN[\s]+ (.*?),,,,

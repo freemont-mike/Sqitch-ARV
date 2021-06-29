@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=test
+%uri=https://github.com/sqitchers/sqitch-intro/
+
+sample/test 2020-03-15T08:30:11Z Micheal Berhanu <Micheal@DESKTOP-SIPFJ5O> # created test functions
